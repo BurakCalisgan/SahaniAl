@@ -201,9 +201,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        Intent opening = new Intent(getApplicationContext(),OpeningScreenActivity.class);
-        startActivity(opening);
-        //finish();
+        Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(mainActivity);
     }
 
 
