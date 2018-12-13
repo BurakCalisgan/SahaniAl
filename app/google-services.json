@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "80948449812",
-    "firebase_url": "https://sahanial-c57f1.firebaseio.com",
-    "project_id": "sahanial-c57f1",
-    "storage_bucket": "sahanial-c57f1.appspot.com"
+    "project_number": "208349343805",
+    "firebase_url": "https://sahanial-b6855.firebaseio.com",
+    "project_id": "sahanial-b6855",
+    "storage_bucket": "sahanial-b6855.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:80948449812:android:36f466368fe3e571",
+        "mobilesdk_app_id": "1:208349343805:android:36f466368fe3e571",
         "android_client_info": {
           "package_name": "sahanial.com.sahanal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "80948449812-43esovgc8skerqtt11no3kbvqnf2qrpe.apps.googleusercontent.com",
+          "client_id": "208349343805-8bjgel3h5etg1nei831oonqktfu6p6rl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDh8ByJg0IWPpsXouNAIUYmWNha-LH9gKQ"
+          "current_key": "AIzaSyDukOnBY471cqTP7xyKQWTG-vp5SRpvASk"
         }
       ],
       "services": {
