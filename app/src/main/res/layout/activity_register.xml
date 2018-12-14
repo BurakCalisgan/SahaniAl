@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.RegisterActivity"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="#ffffff">
+    tools:layout_editor_absoluteY="81dp">
+
     <ImageView
         android:id="@+id/imgvUserPhoto"
         android:layout_width="90dp"
@@ -45,7 +45,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/edtRegisterMail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_user_icon" />
 
     <EditText
         android:background="@drawable/register_edittext_style"
@@ -62,7 +63,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_mail" />
 
     <EditText
         android:background="@drawable/register_edittext_style"
@@ -79,7 +81,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:drawableLeft="@drawable/ic_pass_icon" />
 
     <EditText
         android:background="@drawable/register_edittext_style"
@@ -96,7 +99,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegisterPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/edtRegisterPassword"
+        android:drawableLeft="@drawable/ic_confirm_icon" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -108,7 +112,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/register_button_style"
+        android:background="@drawable/register_button"
         android:text="Kayıt Ol"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
