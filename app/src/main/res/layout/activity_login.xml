@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.LoginActivity"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="#fff">
+    tools:layout_editor_absoluteY="81dp">
 
 
 
     <ImageView
         android:id="@+id/imgvLoginPhoto"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -24,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/userphoto" />
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/edtLoginMail"
@@ -41,7 +40,8 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:drawableLeft="@drawable/ic_user"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
@@ -55,17 +55,18 @@
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/register_edittext_style"
         android:ems="10"
-        android:hint="Şİfre"
+        android:hint="Şifre"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        android:drawableLeft="@drawable/ic_lock"/>
 
     <Button
         android:id="@+id/btnLogin"
@@ -73,14 +74,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/register_button_style"
-        android:text="Giriş Yap"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/register_button"
+        android:text="GİRİŞ YAP"
         android:textColor="#fff"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtLoginPassword" />
