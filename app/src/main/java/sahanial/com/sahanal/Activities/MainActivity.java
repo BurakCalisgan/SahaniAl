@@ -1,5 +1,6 @@
 package sahanial.com.sahanal.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,12 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import sahanial.com.sahanal.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Button btnSaha;
+    Button btnRandevu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        btnSaha=findViewById(R.id.buttonSahaYonetim);
+        btnRandevu=findViewById(R.id.buttonRandevuYonetim);
+
+        btnSaha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sahaYonetim = new Intent(MainActivity.this,SahaYonetimActivity.class);
+                startActivity(sahaYonetim);
+            }
+        });
     }
 
     @Override

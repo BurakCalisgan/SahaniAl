@@ -18,14 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.LoginActivity" >
-
-        </activity>
+        <activity android:name=".Activities.LoginActivity"></activity>
         <activity android:name=".Activities.RegisterActivity" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.SahaYonetimActivity"></activity>
     </application>
 
 </manifest>

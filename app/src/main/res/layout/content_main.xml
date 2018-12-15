@@ -8,4 +8,28 @@
     tools:context=".Activities.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <Button
+        android:id="@+id/buttonSahaYonetim"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="59dp"
+        android:layout_marginBottom="57dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Saha Yönetim"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRandevuYonetim"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRandevuYonetim"
+        android:layout_width="200dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="95dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Randevu Yönetim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSahaYonetim" />
 </android.support.constraint.ConstraintLayout>
