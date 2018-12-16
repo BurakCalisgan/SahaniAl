@@ -1,9 +1,11 @@
 package sahanial.com.sahanal.Activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import sahanial.com.sahanal.R;
 
@@ -27,6 +35,13 @@ public class MainActivity extends AppCompatActivity
     FirebaseUser user;
     Button btnSaha;
     Button btnRandevu;
+    TextView  txtvDisplayName, txtvDisplayMail;
+    ImageView imgvMainUser;
+    FirebaseStorage fStorage;
+    StorageReference storageRef;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +49,33 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //headerView'deki elementlere erişim için
+        View headerView = navigationView.getHeaderView(0);
+
         //inu views
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
 
+        txtvDisplayMail = headerView.findViewById(R.id.txtvDisplayMail);
+        txtvDisplayName = headerView.findViewById(R.id.txtvDisplayName);
+        imgvMainUser  = headerView.findViewById(R.id.imgvMainUser);
+        //fStorage = FirebaseStorage.getInstance();
+        //storageRef = fStorage.getReference().child("users_photos");//.child(mAuth.getCurrentUser().getUid());
+
+
+        // inu Views Set
+        txtvDisplayName.setText(user.getDisplayName());
+        txtvDisplayMail.setText(user.getEmail());
+
+        /*storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                imgvMainUser.setImageURI(uri);
+            }
+        });*/
 
 
 
@@ -56,8 +94,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
 
         btnSaha=findViewById(R.id.buttonSahaYonetim);
         btnRandevu=findViewById(R.id.buttonRandevuYonetim);
