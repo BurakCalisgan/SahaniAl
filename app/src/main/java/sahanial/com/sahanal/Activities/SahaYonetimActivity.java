@@ -57,7 +57,7 @@ public class SahaYonetimActivity extends AppCompatActivity {
                     Saha saha=new Saha(id,sahaAd,sahaOzellik,sahaGenislik,sahaYukseklik);
                     sahalar.add(saha);
                 }
-                sahaAdapter adapter=new sahaAdapter(SahaYonetimActivity.this,sahalar);
+                sahaAdapter adapter=new sahaAdapter(SahaYonetimActivity.this,sahalar,databaseReference);
                 listSaha.setAdapter(adapter);
             }
 

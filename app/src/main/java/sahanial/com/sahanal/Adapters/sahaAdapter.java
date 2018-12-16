@@ -26,11 +26,13 @@ import sahanial.com.sahanal.R;
 public class sahaAdapter extends ArrayAdapter<Saha> {
     private Context context;
     private List<Saha> sahalar;
+    private DatabaseReference databaseReference;
 
-    public sahaAdapter(Activity context, List<Saha> sahalar){
+    public sahaAdapter(Activity context, List<Saha> sahalar,DatabaseReference databaseReference){
         super(context,R.layout.saha_list,sahalar);
         this.context=context;
         this.sahalar=sahalar;
+        this.databaseReference=databaseReference;
     }
 
     @NonNull
@@ -42,12 +44,29 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
         TextView sahaOzellik=listViewItem.findViewById(R.id.txtSahaOzellik);
         TextView sahaGenislik=listViewItem.findViewById(R.id.txtSahaGenislik);
         TextView sahaYukseklik=listViewItem.findViewById(R.id.txtSahaYukseklik);
+        Button update=listViewItem.findViewById(R.id.btnUpdate);
+        Button delete=listViewItem.findViewById(R.id.btnDelete);
 
-        Saha saha =sahalar.get(position);
+        final Saha saha =sahalar.get(position);
         sahaAd.setText(saha.getSahaAd());
         sahaOzellik.setText(saha.getSahaOzellik());
         sahaGenislik.setText(saha.getSahaGenislik());
         sahaYukseklik.setText(saha.getSahaYukseklik());
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference.child(saha.getSahaID()).removeValue();
+                Toast.makeText(context,"Saha Başarıyla Silindi.",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return listViewItem;
     }
