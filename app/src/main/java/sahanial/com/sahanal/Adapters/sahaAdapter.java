@@ -27,12 +27,20 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
     private Context context;
     private List<Saha> sahalar;
     private DatabaseReference databaseReference;
+    private EditText ad;
+    private EditText ozellik;
+    private EditText genislik;
+    private EditText yukseklik;
 
-    public sahaAdapter(Activity context, List<Saha> sahalar,DatabaseReference databaseReference){
+    public sahaAdapter(Activity context, List<Saha> sahalar,DatabaseReference databaseReference,EditText ad,EditText ozellik,EditText genislik,EditText yukseklik){
         super(context,R.layout.saha_list,sahalar);
         this.context=context;
         this.sahalar=sahalar;
         this.databaseReference=databaseReference;
+        this.ad=ad;
+        this.ozellik=ozellik;
+        this.genislik=genislik;
+        this.yukseklik=yukseklik;
     }
 
     @NonNull
@@ -40,10 +48,10 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
     public View getView(int position,View convertView,ViewGroup parent) {
         LayoutInflater inflater=LayoutInflater.from(context);
         View listViewItem=inflater.inflate(R.layout.saha_list,null,true);
-        TextView sahaAd=listViewItem.findViewById(R.id.txtSahaAdi);
-        TextView sahaOzellik=listViewItem.findViewById(R.id.txtSahaOzellik);
-        TextView sahaGenislik=listViewItem.findViewById(R.id.txtSahaGenislik);
-        TextView sahaYukseklik=listViewItem.findViewById(R.id.txtSahaYukseklik);
+        final TextView sahaAd=listViewItem.findViewById(R.id.txtSahaAdi);
+        final TextView sahaOzellik=listViewItem.findViewById(R.id.txtSahaOzellik);
+        final TextView sahaGenislik=listViewItem.findViewById(R.id.txtSahaGenislik);
+        final TextView sahaYukseklik=listViewItem.findViewById(R.id.txtSahaYukseklik);
         Button update=listViewItem.findViewById(R.id.btnUpdate);
         Button delete=listViewItem.findViewById(R.id.btnDelete);
 
@@ -57,6 +65,12 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
             @Override
             public void onClick(View v) {
 
+                ad.setText(saha.getSahaAd());
+                ozellik.setText(saha.getSahaOzellik());
+                genislik.setText(saha.getSahaGenislik());
+                yukseklik.setText(saha.getSahaYukseklik());
+
+                SahaYonetimActivity.ID=saha.getSahaID();
             }
         });
 

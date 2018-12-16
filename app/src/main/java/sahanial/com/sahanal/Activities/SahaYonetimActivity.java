@@ -3,6 +3,7 @@ package sahanial.com.sahanal.Activities;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,7 +58,7 @@ public class SahaYonetimActivity extends AppCompatActivity {
                     Saha saha=new Saha(id,sahaAd,sahaOzellik,sahaGenislik,sahaYukseklik);
                     sahalar.add(saha);
                 }
-                sahaAdapter adapter=new sahaAdapter(SahaYonetimActivity.this,sahalar,databaseReference);
+                sahaAdapter adapter=new sahaAdapter(SahaYonetimActivity.this,sahalar,databaseReference,txtSahaAdi,txtSahaOzellik,txtSahaGenislik,txtSahaYukseklik);
                 listSaha.setAdapter(adapter);
             }
 
@@ -93,10 +94,22 @@ public class SahaYonetimActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Ekleme Başarısız", Toast.LENGTH_LONG).show();
                 }
                 else{
-                    ID=databaseReference.push().getKey();
-                    Saha saha=new Saha(ID,txtSahaAdi.getText().toString(),txtSahaOzellik.getText().toString(),txtSahaGenislik.getText().toString(),txtSahaYukseklik.getText().toString());
-                    databaseReference.child(ID).setValue(saha);
-                    Toast.makeText(getApplicationContext(),"Yeni Saha Eklendi",Toast.LENGTH_LONG).show();
+
+                    if(TextUtils.isEmpty(ID)) {
+                        ID = databaseReference.push().getKey();
+                        Saha saha = new Saha(ID, txtSahaAdi.getText().toString(), txtSahaOzellik.getText().toString(), txtSahaGenislik.getText().toString(), txtSahaYukseklik.getText().toString());
+                        databaseReference.child(ID).setValue(saha);
+                        Toast.makeText(getApplicationContext(), "Yeni Saha Eklendi", Toast.LENGTH_LONG).show();
+                        ID=null;
+                    }
+                    else{
+                        databaseReference.child(ID).child("sahaAd").setValue(txtSahaAdi.getText().toString());
+                        databaseReference.child(ID).child("sahaOzellik").setValue(txtSahaOzellik.getText().toString());
+                        databaseReference.child(ID).child("sahaGenislik").setValue(txtSahaGenislik.getText().toString());
+                        databaseReference.child(ID).child("sahaYukseklik").setValue(txtSahaYukseklik.getText().toString());
+                        Toast.makeText(getApplicationContext(),"Kitap Başarıyla Güncellendi.",Toast.LENGTH_SHORT).show();
+                        ID=null;
+                    }
                     txtSahaAdi.setText("");
                     txtSahaOzellik.setText("");
                     txtSahaGenislik.setText("");
