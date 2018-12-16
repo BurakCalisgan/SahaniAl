@@ -15,11 +15,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import sahanial.com.sahanal.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     Button btnSaha;
     Button btnRandevu;
     @Override
@@ -28,6 +33,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //inu views
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -110,9 +122,19 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+        else if (id == R.id.nav_logout) {
+            mAuth.signOut();;
+            updateUI();
+            finish();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    void updateUI(){
+        Intent openScreen =  new Intent(getApplicationContext(),OpeningScreenActivity.class);
+        startActivity(openScreen);
     }
 }
