@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity
 
     FirebaseAuth mAuth;
     FirebaseUser user;
-    Button btnSaha;
-    Button btnRandevu;
+
     TextView  txtvDisplayName, txtvDisplayMail;
     ImageView imgvMainUser;
     FirebaseStorage fStorage;
@@ -94,18 +93,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new Router()).commit();
 
 
-        btnSaha=findViewById(R.id.buttonSahaYonetim);
-        btnRandevu=findViewById(R.id.buttonRandevuYonetim);
-
-        btnSaha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sahaYonetim = new Intent(MainActivity.this,SahaYonetimActivity.class);
-                startActivity(sahaYonetim);
-            }
-        });
     }
 
     @Override
