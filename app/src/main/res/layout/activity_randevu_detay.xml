@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RandevuDetay"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/btnGuncelle"
+        android:layout_width="83dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_orange_light"
+        android:text="Güncelle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txTel"
+        android:layout_width="133dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="273dp"
+        android:text="Telefon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txTarih" />
+
+    <TextView
+        android:id="@+id/txTarih"
+        android:layout_width="133dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="19dp"
+        android:text="Tarih"
+        app:layout_constraintBottom_toTopOf="@+id/txTel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txAdSoyad" />
+
+    <TextView
+        android:id="@+id/txAdSoyad"
+        android:layout_width="133dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:text="Ad Soyad"
+        app:layout_constraintBottom_toTopOf="@+id/txTarih"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txSaat" />
+
+    <TextView
+        android:id="@+id/txSaat"
+        android:layout_width="133dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:text="Saat"
+        app:layout_constraintBottom_toTopOf="@+id/txAdSoyad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ddSahalar" />
+
+    <Spinner
+        android:id="@+id/ddSahalar"
+        android:layout_width="135dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/txSaat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSil"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Sil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnGuncelle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
