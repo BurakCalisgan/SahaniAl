@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -45,6 +46,9 @@ public class Sahalar extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().getWindow().setBackgroundDrawableResource(R.drawable.footballpitch);
+        this.getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        
         View rootView = inflater.inflate(R.layout.fragment_sahalar, container, false);
         eTxtSahaName=(EditText)rootView.findViewById(R.id.editTextSahaAdi);
         eTxtSahaProperty=(EditText)rootView.findViewById(R.id.editTextSahaOzellik);

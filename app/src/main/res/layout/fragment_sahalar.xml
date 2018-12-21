@@ -4,73 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SahaYonetimActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".Activities.Sahalar"
+    tools:layout_editor_absoluteY="81dp"
+    android:layout_marginTop="20dp">
 
     <EditText
         android:id="@+id/editTextSahaAdi"
+        android:background="@drawable/register_edittext_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
-        android:ems="7"
+        android:ems="8"
         android:hint="Saha Adı"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <EditText
         android:id="@+id/editTextSahaOzellik"
+        android:background="@drawable/register_edittext_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="11dp"
-        android:ems="7"
+        android:ems="8"
         android:hint="Saha Özelliği"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <EditText
         android:id="@+id/editTextSahaGenislik"
+        android:background="@drawable/register_edittext_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="7"
+        android:ems="8"
         android:hint="Saha Genislik"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/editTextSahaAdi"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSahaAdi" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSahaAdi"
+        android:layout_marginTop="5dp"
+        />
 
     <EditText
         android:id="@+id/editTextSahaYukseklik"
+        android:background="@drawable/register_edittext_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="7"
+        android:ems="8"
         android:hint="Saha Yukseklik"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/editTextSahaOzellik"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSahaOzellik" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSahaOzellik"
+        android:layout_marginTop="5dp"
+        />
 
     <Button
         android:id="@+id/buttonSend"
+        android:background="@drawable/pitch_management_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="12dp"
         android:text="Kaydet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSahaYukseklik" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSahaYukseklik"
+        android:textColor="@color/white"/>
 
-    <ListView
-        android:id="@+id/listSaha"
+    <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="297dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSend" />
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="220dp"
+        android:layout_marginBottom="70dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/trans_white_rectangle"
+        android:orientation="vertical"
+        >
+        <ListView
+            android:id="@+id/listSaha"
+            android:layout_width="match_parent"
+            android:layout_height="325dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSend" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

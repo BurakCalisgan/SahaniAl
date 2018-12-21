@@ -104,11 +104,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@drawable/pitch_management_update_button"
         android:text="Güncelle"
         app:layout_constraintEnd_toStartOf="@+id/buttonDeleteD"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD"
+        android:textColor="@color/white"
+        />
 
     <Button
         android:id="@+id/buttonDeleteD"
@@ -116,9 +118,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="5dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/pitch_management_delete_button"
         android:text="Sil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonUpdateD"
-        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD"
+        android:textColor="@color/white"
+        />
 </android.support.constraint.ConstraintLayout>
