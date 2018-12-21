@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new Router()).commit();
+                new Sahalar()).commit();
 
 
     }
@@ -145,14 +145,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_main) {
-            Router routerFragment = new Router();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container,routerFragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
 
-        }else if (id == R.id.nav_fields_management) {
+        if (id == R.id.nav_fields_management) {
             Sahalar newGameFragment=new Sahalar();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,newGameFragment);
