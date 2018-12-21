@@ -36,8 +36,11 @@ public class Router extends Fragment {
         btnSaha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sahaYonetim = new Intent(getContext(),SahaYonetimActivity.class);
-                startActivity(sahaYonetim);
+                Sahalar newGameFragment=new Sahalar();
+                FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container,newGameFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         btnRandevu.setOnClickListener(new View.OnClickListener() {

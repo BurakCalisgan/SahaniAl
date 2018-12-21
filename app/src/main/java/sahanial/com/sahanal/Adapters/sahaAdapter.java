@@ -2,6 +2,7 @@ package sahanial.com.sahanal.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sahanial.com.sahanal.Activities.MainActivity;
-import sahanial.com.sahanal.Activities.SahaYonetimActivity;
+import sahanial.com.sahanal.Activities.RandevuDetay;
+import sahanial.com.sahanal.Activities.SahaDetayActivity;
 import sahanial.com.sahanal.Models.Saha;
 import sahanial.com.sahanal.R;
 
@@ -52,33 +54,72 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
         final TextView sahaOzellik=listViewItem.findViewById(R.id.txtSahaOzellik);
         final TextView sahaGenislik=listViewItem.findViewById(R.id.txtSahaGenislik);
         final TextView sahaYukseklik=listViewItem.findViewById(R.id.txtSahaYukseklik);
-        Button update=listViewItem.findViewById(R.id.btnUpdate);
-        Button delete=listViewItem.findViewById(R.id.btnDelete);
+        Button detay=listViewItem.findViewById(R.id.btnDetay);
+
 
         final Saha saha =sahalar.get(position);
-        sahaAd.setText(saha.getSahaAd());
-        sahaOzellik.setText(saha.getSahaOzellik());
-        sahaGenislik.setText(saha.getSahaGenislik());
-        sahaYukseklik.setText(saha.getSahaYukseklik());
 
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ad.setText(saha.getSahaAd());
-                ozellik.setText(saha.getSahaOzellik());
-                genislik.setText(saha.getSahaGenislik());
-                yukseklik.setText(saha.getSahaYukseklik());
-
-                SahaYonetimActivity.ID=saha.getSahaID();
+        //Saha listelenirken saha adi 8 karakter olarak gosterilecek.
+        String strSahaAd;
+        strSahaAd=saha.getSahaAd();
+        if(strSahaAd.length()<8){
+            for (int i=strSahaAd.length();i<8;i++){
+                strSahaAd+=".";
             }
-        });
+        }
+        else{
+            strSahaAd=strSahaAd.substring(0,7)+".";
+        }
+        sahaAd.setText(strSahaAd);
 
-        delete.setOnClickListener(new View.OnClickListener() {
+        //Saha listelenirken saha ozelligi 8 karakter olarak gosterilecek.
+        String strSahaOzellik;
+        strSahaOzellik=saha.getSahaOzellik();
+        if(strSahaOzellik.length()<8){
+            for (int i=strSahaOzellik.length();i<8;i++){
+                strSahaOzellik+=".";
+            }
+        }
+        else{
+            strSahaOzellik=strSahaOzellik.substring(0,7)+".";
+        }
+        sahaOzellik.setText(strSahaOzellik);
+
+        String strSahaGenislik;
+        strSahaGenislik=saha.getSahaGenislik();
+        if(strSahaGenislik.length()<8){
+            for (int i=strSahaGenislik.length();i<8;i++){
+                strSahaGenislik+=".";
+            }
+        }
+        else{
+            strSahaGenislik=strSahaOzellik.substring(0,7)+".";
+        }
+        sahaGenislik.setText(strSahaGenislik);
+
+        String strSahaYukseklik;
+        strSahaYukseklik=saha.getSahaYukseklik();
+        if(strSahaYukseklik.length()<8){
+            for (int i=strSahaYukseklik.length();i<8;i++){
+                strSahaYukseklik+=".";
+            }
+        }
+        else{
+            strSahaYukseklik=strSahaYukseklik.substring(0,7)+".";
+        }
+        sahaYukseklik.setText(strSahaYukseklik);
+
+
+        detay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference.child(saha.getSahaID()).removeValue();
-                Toast.makeText(context,"Saha Başarıyla Silindi.",Toast.LENGTH_SHORT).show();
+                Intent deneme=new Intent(getContext(),SahaDetayActivity.class);
+                deneme.putExtra("SahaID",saha.getSahaID().toString());
+                deneme.putExtra("SahaName",saha.getSahaAd().toString());
+                deneme.putExtra("SahaProperty",saha.getSahaOzellik().toString());
+                deneme.putExtra("SahaWidth",saha.getSahaGenislik().toString());
+                deneme.putExtra("SahaHeight",saha.getSahaYukseklik().toString());
+                context.startActivity(deneme);
             }
         });
 

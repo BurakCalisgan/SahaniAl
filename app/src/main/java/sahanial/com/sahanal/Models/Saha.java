@@ -14,6 +14,9 @@ public class Saha {
         this.sahaGenislik=sahaGenislik;
         this.sahaYukseklik=sahaYukseklik;
     }
+    public Saha(){
+
+    }
 
     public String getSahaID(){
         return sahaID;
