@@ -5,6 +5,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,6 +35,9 @@ public class SahaDetayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saha_detay);
+        getWindow().setBackgroundDrawableResource(R.drawable.footballpitch);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         mAuth=FirebaseAuth.getInstance();
         user=mAuth.getCurrentUser();
         databaseReference =FirebaseDatabase.getInstance().getReference("sahalar/"+user.getUid().toString());

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.SahaDetayActivity">
+    tools:context=".Activities.SahaDetayActivity"
+    android:paddingLeft="10dp">
+    android:paddingRight="10dp">
 
     <TextView
         android:id="@+id/tViewSahaName"
@@ -15,7 +17,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/eTxtSahaNameD"
@@ -27,7 +30,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tViewSahaName" />
+        app:layout_constraintTop_toBottomOf="@+id/tViewSahaName"
+        android:background="@drawable/register_edittext_style"/>
 
     <TextView
         android:id="@+id/tViewSahaProperty"
@@ -38,7 +42,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaNameD" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaNameD"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/eTxtSahaPropertyD"
@@ -50,7 +55,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tViewSahaProperty" />
+        app:layout_constraintTop_toBottomOf="@+id/tViewSahaProperty"
+        android:background="@drawable/register_edittext_style"/>
 
     <TextView
         android:id="@+id/tViewSahaWidth"
@@ -61,7 +67,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaPropertyD" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaPropertyD"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/eTxtSahaWidthD"
@@ -73,7 +80,8 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tViewSahaWidth" />
+        app:layout_constraintTop_toBottomOf="@+id/tViewSahaWidth"
+        android:background="@drawable/register_edittext_style"/>
 
     <TextView
         android:id="@+id/tViewSahaHeight"
@@ -84,7 +92,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaWidthD" />
+        app:layout_constraintTop_toBottomOf="@+id/eTxtSahaWidthD"
+        android:textColor="@color/white"/>
 
     <EditText
         android:id="@+id/eTxtSahaHeightD"
@@ -96,16 +105,17 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tViewSahaHeight" />
+        app:layout_constraintTop_toBottomOf="@+id/tViewSahaHeight"
+        android:background="@drawable/register_edittext_style"/>
 
     <Button
         android:id="@+id/buttonUpdateD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/pitch_management_update_button"
-        android:text="Güncelle"
+        android:text="GÜNCELLE"
         app:layout_constraintEnd_toStartOf="@+id/buttonDeleteD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD"
@@ -116,10 +126,10 @@
         android:id="@+id/buttonDeleteD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="5dp"
         android:background="@drawable/pitch_management_delete_button"
-        android:text="Sil"
+        android:text="SİL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonUpdateD"
         app:layout_constraintTop_toBottomOf="@+id/eTxtSahaHeightD"
