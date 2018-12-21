@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password2 = userPassword2.getText().toString();
                 final String name = userName.getText().toString();
 
-                if ( email.isEmpty() || name.isEmpty() || password.isEmpty() || !password2.equals(password)){
+                if ( email.isEmpty() || name.isEmpty() || password.isEmpty() || !password2.equals(password) || pickedImgUri == null){
                     //Yanlış birşeyler oluyor demektir.
                     //Hata mesajı göstermek gerekir
 
@@ -158,8 +158,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Önce kullanıcı fotoğrafını firebase depolama alanına yüklememiz ve url almamız gerekiyor.
 
-        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos");
-        final StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
+        StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos").child(currentUser.getUid());
+        final StorageReference imageFilePath = mStorage;
         imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

@@ -1,10 +1,13 @@
 package sahanial.com.sahanal.Activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,11 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,20 +67,38 @@ public class MainActivity extends AppCompatActivity
         txtvDisplayMail = headerView.findViewById(R.id.txtvDisplayMail);
         txtvDisplayName = headerView.findViewById(R.id.txtvDisplayName);
         imgvMainUser  = headerView.findViewById(R.id.imgvMainUser);
-        //fStorage = FirebaseStorage.getInstance();
-        //storageRef = fStorage.getReference().child("users_photos");//.child(mAuth.getCurrentUser().getUid());
+        fStorage = FirebaseStorage.getInstance();
+        storageRef = fStorage.getReference().child("users_photos").child(mAuth.getCurrentUser().getUid());
 
 
         // inu Views Set
         txtvDisplayName.setText(user.getDisplayName());
         txtvDisplayMail.setText(user.getEmail());
-
-        /*storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                imgvMainUser.setImageURI(uri);
+
+                //Picasso.with(context).load(uri).fit().centerCrop().into(holder.userImage);
+                Glide.with(getApplicationContext())
+                        .load(uri)
+                        .asBitmap()
+                        .centerCrop()
+                        .into(new SimpleTarget<Bitmap>(200,200) {
+                            @Override
+                            public void onResourceReady(Bitmap resource,GlideAnimation glideAnimation) {
+                                imgvMainUser.setImageBitmap(resource);
+                            }
+                        });
+
             }
-        });*/
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Toast.makeText(getApplicationContext(),e.getMessage().toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -121,10 +145,26 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        if (id == R.id.nav_main) {
+            Router routerFragment = new Router();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,routerFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-        if (id == R.id.nav_share) {
+        }else if (id == R.id.nav_fields_management) {
+            Sahalar newGameFragment=new Sahalar();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,newGameFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_appointments_management) {
+            Ranvdevular newGamefragment = new Ranvdevular();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, newGamefragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();;

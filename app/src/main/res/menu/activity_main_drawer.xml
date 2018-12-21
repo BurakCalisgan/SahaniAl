@@ -5,13 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Saha Yönetimi" />
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="ANA SAYFA" />
         <item
-            android:id="@+id/nav_send"
+            android:id="@+id/nav_fields_management"
+            android:icon="@drawable/ic_menu_share"
+            android:title="SAHA YÖNETİMİ" />
+        <item
+            android:id="@+id/nav_appointments_management"
             android:icon="@drawable/ic_menu_send"
-            android:title="Randevu Yönetimi" />
+            android:title="RANDEVU YÖNETİMİ" />
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_menu_exit"
