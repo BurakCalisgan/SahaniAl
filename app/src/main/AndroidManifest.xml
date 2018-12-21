@@ -24,7 +24,6 @@
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.SahaYonetimActivity" />
         <activity android:name=".Activities.RandevuDetay" />
         <activity android:name=".Activities.SahaDetayActivity"></activity>
     </application>
