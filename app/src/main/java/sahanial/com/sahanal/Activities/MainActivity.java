@@ -149,11 +149,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }
-        else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
             mAuth.signOut();;
             updateUI();
             finish();
+        } else if(id == R.id.nav_menu){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new Router()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

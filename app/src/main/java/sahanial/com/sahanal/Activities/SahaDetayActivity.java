@@ -66,7 +66,7 @@ public class SahaDetayActivity extends AppCompatActivity {
                 databaseReference.child(saha.getSahaID()).child("sahaOzellik").setValue(eTxtSahaProperty.getText().toString());
                 databaseReference.child(saha.getSahaID()).child("sahaGenislik").setValue(eTxtSahaWidth.getText().toString());
                 databaseReference.child(saha.getSahaID()).child("sahaYukseklik").setValue(eTxtSahaHeight.getText().toString());
-                Toast.makeText(getApplicationContext(),"Kitap Başarıyla Güncellendi.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Saha Başarıyla Güncellendi.",Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
