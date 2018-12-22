@@ -1,6 +1,7 @@
 package sahanial.com.sahanal.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new Sahalar()).commit();
+        this.setTitle("Saha Yönetim");
 
 
     }
@@ -152,6 +154,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container,newGameFragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            this.setTitle("Saha Yönetim");
 
         } else if (id == R.id.nav_appointments_management) {
             Ranvdevular newGamefragment = new Ranvdevular();
@@ -159,6 +162,7 @@ public class MainActivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container, newGamefragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+            this.setTitle("Randevu Yönetim");
 
         } else if (id == R.id.nav_logout) {
             mAuth.signOut();;

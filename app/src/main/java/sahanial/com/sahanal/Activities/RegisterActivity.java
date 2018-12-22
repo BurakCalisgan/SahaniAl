@@ -35,7 +35,7 @@ import sahanial.com.sahanal.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    ImageView userPhoto;
+    ImageView userPhoto,imgvAddPhoto;
     static int PReqCode = 1;
     static int REQUESTCODE = 1;
     Uri pickedImgUri;
@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         userPassword2 = findViewById(R.id.edtRegisterPassword2);
         userName = findViewById(R.id.edtRegisterName);
         userPhoto = findViewById(R.id.imgvUserPhoto);
+        imgvAddPhoto = findViewById(R.id.imgvAddPhoto);
         loadingProgress = findViewById(R.id.progresbarRegister);
         loadingProgress.setVisibility(View.INVISIBLE);
         btnRegister = findViewById(R.id.btnRegister);
@@ -106,6 +107,22 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         userPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (Build.VERSION.SDK_INT >= 22){
+                    checkAndRequestPermission();
+
+                }
+                else{
+                    openGallery();
+
+                }
+
+            }
+        });
+
+        imgvAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
