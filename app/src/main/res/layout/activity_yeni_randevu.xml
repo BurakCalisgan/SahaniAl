@@ -49,15 +49,16 @@
 
     <EditText
         android:id="@+id/txTel"
-        android:background="@drawable/white_rectangle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="17dp"
-        android:paddingLeft="10dp"
+        android:background="@drawable/white_rectangle"
         android:hint="Telefon numarası giriniz."
+        android:inputType="phone"
+        android:paddingLeft="10dp"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/txTarih"
         app:layout_constraintEnd_toEndOf="parent"
