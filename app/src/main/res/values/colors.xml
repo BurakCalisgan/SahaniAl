@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#d81b60</color>
-    <color name="white">#ffffff</color>
+    <color name="colorAccent">#7786e6</color>
+    <color name="white">#fbfbfb</color>
     <color name="black">#000000</color>
     <color name="blurWhite">#90ffffff</color>
     <color name="lightBlue">#5a95f4</color>
-    <color name="purple">#671dbc</color>
+    <color name="purple">#8b33ee</color>
 </resources>

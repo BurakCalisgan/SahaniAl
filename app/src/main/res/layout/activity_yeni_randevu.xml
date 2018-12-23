@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.RandevuDetay"
+    tools:context=".Activities.YeniRandevu"
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="0dp"
+        android:layout_width="67dp"
         android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="19dp"
         android:text="Saat:"
         app:layout_constraintBottom_toTopOf="@+id/txAdSoyad"
         app:layout_constraintEnd_toStartOf="@+id/ddSaatler"
@@ -25,24 +25,36 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="397dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGuncelle"
+        android:layout_marginBottom="19dp"
+        app:layout_constraintBottom_toTopOf="@+id/txAdSoyad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/ddSahalar" />
+
+    <Button
+        android:id="@+id/btnEkle"
+        android:layout_width="114dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="42dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Ekle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txTarih" />
 
     <EditText
         android:id="@+id/txTel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="17dp"
         android:text="Telefon"
-        android:textSize="8sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/txTarih"
-        app:layout_constraintEnd_toEndOf="@+id/txAdSoyad"
-        app:layout_constraintStart_toStartOf="@+id/txAdSoyad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txAdSoyad" />
 
 
@@ -50,12 +62,12 @@
         android:id="@+id/txTarih"
         android:layout_width="208dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="218dp"
+        android:layout_marginBottom="125dp"
         android:text=" Tarih Seçiniz"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSil"
+        app:layout_constraintBottom_toTopOf="@+id/btnEkle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txTel" />
@@ -67,10 +79,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="359dp"
         android:text="Ad Soyad"
-        android:textSize="8sp"
-        app:layout_constraintBottom_toTopOf="@+id/txTel"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -90,45 +102,17 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="66dp"
         android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="36dp"
         android:text="SahaAdi:"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/ddSahalar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnGuncelle"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/holo_orange_light"
-        android:text="Güncelle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSil"
-        app:layout_constraintTop_toBottomOf="@+id/ddSaatler" />
-
-
-    <Button
-        android:id="@+id/btnSil"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/holo_red_dark"
-        android:text="Sil"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuncelle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txTarih" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,29 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Ranvdevular">
+    tools:context=".Activities.Ranvdevular"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/btnSorgula"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="17dp"
+        android:background="@color/colorAccent"
+        android:text="Sorgula"
+        app:layout_constraintBottom_toTopOf="@+id/liste"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnYeni"
+        app:layout_constraintTop_toBottomOf="@+id/dtTarih" />
 
     <ListView
         android:id="@+id/liste"
-        android:layout_width="match_parent"
-        android:layout_height="416dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="79dp">
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSorgula">
 
     </ListView>
 
     <Button
         android:id="@+id/btnYeni"
-        android:layout_width="129dp"
-        android:layout_height="39dp"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="17dp"
         android:background="@android:color/holo_green_light"
         android:text="Yeni Kayit"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="30dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnSorgula"
+        app:layout_constraintEnd_toStartOf="@+id/btnSorgula"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/dtTarih"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="17dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Tarih Seçiniz"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSorgula"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,7 +1,6 @@
 package sahanial.com.sahanal.Activities;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,60 +26,42 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
+import sahanial.com.sahanal.Adapters.sahaAdapter;
 import sahanial.com.sahanal.Models.RandevuModel;
+import sahanial.com.sahanal.Models.Saha;
 import sahanial.com.sahanal.R;
 
-import static java.lang.Integer.valueOf;
-
-public class RandevuDetay extends AppCompatActivity {
+public class YeniRandevu extends AppCompatActivity {
 
     EditText txTel;
     EditText txAdSoyad;
     EditText txSaat;
     TextView dtTarih;
     Spinner ddSahalar;
-    Button btnGuncelle;
-    Button btnSil;
-    String key;
-    String tel;
-    String adSoyad;
-    String dolu;
-    String saat;
-    String tarih;
-    String sahaAdi;
+    Spinner ddSaatler;
+    Button btnEkle;
+    FirebaseUser currentUser;
     Spinner sItems;
+    RandevuModel model;
     private FirebaseAuth mAuth;
-    private int mYear, mMonth, mDay, mHour, mMinute;
     DatabaseReference databaseReference;
     ArrayAdapter<String> adapter2;
     FirebaseUser user;
     List<String> sahalar;
+    private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_randevu_detay);
-        Intent intent = getIntent();
-
-        tel =intent.getStringExtra("tel");
-        adSoyad =intent.getStringExtra("adSoyad");
-        dolu =intent.getStringExtra("dolu");
-        saat =intent.getStringExtra("saat");
-        tarih =intent.getStringExtra("tarih");
-        key =intent.getStringExtra("key");
-        sahaAdi =intent.getStringExtra("sahaAdi");
+        setContentView(R.layout.activity_yeni_randevu);
         txTel=(EditText) findViewById(R.id.txTel);
         txAdSoyad=(EditText) findViewById(R.id.txAdSoyad);
-        //txSaat=(EditText) findViewById(R.id.txSaat);
+       // txSaat=(EditText) findViewById(R.id.txSaat);
         dtTarih=(TextView) findViewById(R.id.txTarih);
-        btnGuncelle =(Button) findViewById(R.id.btnGuncelle);
-        btnSil = (Button) findViewById(R.id.btnSil);
-        txTel.setText(tel);
-        txAdSoyad.setText(adSoyad);
-
-        dtTarih.setText(tarih);
+        btnEkle =(Button) findViewById(R.id.btnEkle);
         mAuth = FirebaseAuth.getInstance();
-        final FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
+
         //saatleri ekle
         List<String> spinnerArray =  new ArrayList<String>();
         for (int i=0; i<24 ;i++)
@@ -96,34 +77,6 @@ public class RandevuDetay extends AppCompatActivity {
         sItems = (Spinner) findViewById(R.id.ddSaatler);
         sItems.setAdapter(adapter);
         //saatleri ekle
-        sItems.setSelection(valueOf(saat));
-        btnSil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/"+tarih+"/"+key);
-                myRef.removeValue();
-                finish();
-            }
-        });
-        btnGuncelle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/"+tarih+"/"+key);
-                myRef.removeValue();
-                RandevuModel model = new RandevuModel();
-
-                model.tarih=dtTarih.getText().toString();
-                model.tel=txTel.getText().toString();
-                model.adSoyad=txAdSoyad.getText().toString();
-                model.saat=sItems.getSelectedItem().toString();
-                model.sahaAdi=ddSahalar.getSelectedItem().toString();
-                DatabaseReference myRef2 = database.getReference("deneme/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
-                myRef2.setValue(model);
-                finish();
-            }
-        });
         dtTarih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +86,7 @@ public class RandevuDetay extends AppCompatActivity {
                 mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(RandevuDetay.this,
+                DatePickerDialog datePickerDialog = new DatePickerDialog(YeniRandevu.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
@@ -149,7 +102,7 @@ public class RandevuDetay extends AppCompatActivity {
         });
         sahalar =  new ArrayList<String>();
         adapter2 = new ArrayAdapter<String>(
-                RandevuDetay.this, android.R.layout.simple_spinner_item, sahalar);
+                YeniRandevu.this, android.R.layout.simple_spinner_item, sahalar);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ddSahalar = (Spinner) findViewById(R.id.ddSahalar);
         ddSahalar.setAdapter(adapter2);
@@ -161,19 +114,15 @@ public class RandevuDetay extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String id,sahaAd,sahaOzellik,sahaGenislik,sahaYukseklik;
-                int counter=0;
-                int sahaNo=0;
+
                 for(DataSnapshot sahaSnapshot:dataSnapshot.getChildren()){
                     Map<String,String> map = (Map<String,String>) sahaSnapshot.getValue();
                     id=map.get("sahaID");
                     sahaAd=map.get("sahaAd");
-                    if( sahaAd.equals(sahaAdi))
-                        sahaNo=counter;
+
                     sahalar.add(sahaAd);
                     adapter2.notifyDataSetChanged();
-                    counter++;
                 }
-                ddSahalar.setSelection(sahaNo);
 
             }
 
@@ -182,7 +131,47 @@ public class RandevuDetay extends AppCompatActivity {
 
             }
         });
+        btnEkle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                model = new RandevuModel();
+                model.sahaAdi=ddSahalar.getSelectedItem().toString();
+                model.sahaId="11";
+                model.tarih=dtTarih.getText().toString();
+                model.tel=txTel.getText().toString();
+                model.adSoyad=txAdSoyad.getText().toString();
+                model.saat= sItems.getSelectedItem().toString();
+                    DatabaseReference myRef = database.getReference("deneme"+"/"+currentUser.getUid()+"/");
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                       Boolean varmi= dataSnapshot.child(model.tarih+"/"+model.saat).exists();
+
+                        if(varmi)
+                        {
+                            Toast.makeText(YeniRandevu.this, "Bu tarih ve sate ait başkka bir kayit zaten ekli",
+                                    Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
+                        DatabaseReference myRef = database.getReference("deneme"+"/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
+                        myRef.setValue(model);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+
+                    }
+                });
+
+
+
+
+            }
+        });
     }
 }

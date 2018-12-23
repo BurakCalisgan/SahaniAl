@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sahanial.com.sahanal">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -25,8 +24,9 @@
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.SahaYonetimActivity" />
         <activity android:name=".Activities.RandevuDetay" />
-        <activity android:name=".Activities.SahaDetayActivity"></activity>
+        <activity android:name=".Activities.YeniRandevu"></activity>
     </application>
 
 </manifest>
