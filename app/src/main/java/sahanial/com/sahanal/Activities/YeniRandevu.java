@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -54,6 +55,8 @@ public class YeniRandevu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yeni_randevu);
+        getWindow().setBackgroundDrawableResource(R.drawable.footballpitch);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         txTel=(EditText) findViewById(R.id.txTel);
         txAdSoyad=(EditText) findViewById(R.id.txAdSoyad);
        // txSaat=(EditText) findViewById(R.id.txSaat);

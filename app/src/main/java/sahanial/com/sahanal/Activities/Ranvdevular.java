@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -57,7 +58,8 @@ public class Ranvdevular extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_ranvdevular, container, false);
-
+        getActivity().getWindow().setBackgroundDrawableResource(R.drawable.footballpitch);
+        this.getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         liste=(ListView) rootView.findViewById(R.id.liste);
         arrayList = new ArrayList<String>();
         itemList = new ArrayList<RandevuModel>();
