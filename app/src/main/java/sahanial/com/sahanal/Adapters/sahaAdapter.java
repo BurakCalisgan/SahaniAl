@@ -113,13 +113,13 @@ public class sahaAdapter extends ArrayAdapter<Saha> {
         detay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent deneme=new Intent(getContext(),SahaDetayActivity.class);
-                deneme.putExtra("SahaID",saha.getSahaID().toString());
-                deneme.putExtra("SahaName",saha.getSahaAd().toString());
-                deneme.putExtra("SahaProperty",saha.getSahaOzellik().toString());
-                deneme.putExtra("SahaWidth",saha.getSahaGenislik().toString());
-                deneme.putExtra("SahaHeight",saha.getSahaYukseklik().toString());
-                context.startActivity(deneme);
+                Intent sahaDetay=new Intent(getContext(),SahaDetayActivity.class);
+                sahaDetay.putExtra("SahaID",saha.getSahaID().toString());
+                sahaDetay.putExtra("SahaName",saha.getSahaAd().toString());
+                sahaDetay.putExtra("SahaProperty",saha.getSahaOzellik().toString());
+                sahaDetay.putExtra("SahaWidth",saha.getSahaGenislik().toString());
+                sahaDetay.putExtra("SahaHeight",saha.getSahaYukseklik().toString());
+                context.startActivity(sahaDetay);
             }
         });
 

@@ -142,7 +142,8 @@ public class YeniRandevu extends AppCompatActivity {
                 model.tel=txTel.getText().toString();
                 model.adSoyad=txAdSoyad.getText().toString();
                 model.saat= sItems.getSelectedItem().toString();
-                    DatabaseReference myRef = database.getReference("deneme"+"/"+currentUser.getUid()+"/");
+
+                DatabaseReference myRef = database.getReference("randevular"+"/"+currentUser.getUid()+"/");
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -150,14 +151,14 @@ public class YeniRandevu extends AppCompatActivity {
 
                         if(varmi)
                         {
-                            Toast.makeText(YeniRandevu.this, "Bu tarih ve sate ait başkka bir kayit zaten ekli",
+                            Toast.makeText(YeniRandevu.this, "Bu tarih ve sate ait başka bir kayit zaten ekli",
                                     Toast.LENGTH_SHORT).show();
                             return;
                         }
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
-                        DatabaseReference myRef = database.getReference("deneme"+"/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
+                        DatabaseReference myRef = database.getReference("randevular"+"/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
                         myRef.setValue(model);
                         finish();
                     }

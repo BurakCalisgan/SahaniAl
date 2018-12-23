@@ -122,7 +122,7 @@ public class Ranvdevular extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/");
+        DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/");
 
 
         // Read from the database
@@ -182,7 +182,7 @@ public class Ranvdevular extends Fragment {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser currentUser = mAuth.getCurrentUser();
-                DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/"+dtTarih.getText().toString());
+                DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+dtTarih.getText().toString());
 
 
                 // Read from the database

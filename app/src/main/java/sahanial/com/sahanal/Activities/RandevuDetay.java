@@ -101,7 +101,7 @@ public class RandevuDetay extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/"+tarih+"/"+key);
+                DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+tarih+"/"+key);
                 myRef.removeValue();
                 finish();
             }
@@ -110,7 +110,7 @@ public class RandevuDetay extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("deneme/"+currentUser.getUid()+"/"+tarih+"/"+key);
+                DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+tarih+"/"+key);
                 myRef.removeValue();
                 RandevuModel model = new RandevuModel();
 
@@ -119,7 +119,7 @@ public class RandevuDetay extends AppCompatActivity {
                 model.adSoyad=txAdSoyad.getText().toString();
                 model.saat=sItems.getSelectedItem().toString();
                 model.sahaAdi=ddSahalar.getSelectedItem().toString();
-                DatabaseReference myRef2 = database.getReference("deneme/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
+                DatabaseReference myRef2 = database.getReference("randevular/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
                 myRef2.setValue(model);
                 finish();
             }

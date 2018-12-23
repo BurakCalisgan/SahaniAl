@@ -81,14 +81,38 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password2 = userPassword2.getText().toString();
                 final String name = userName.getText().toString();
 
-                if ( email.isEmpty() || name.isEmpty() || password.isEmpty() || !password2.equals(password) || pickedImgUri == null){
+                if ( name.isEmpty()){
                     //Yanlış birşeyler oluyor demektir.
                     //Hata mesajı göstermek gerekir
 
-                    showMessage("Lütfen Tüm Alanları Doğrulayın !");
+                    showMessage("Lütfen İsim Alanını Boş Geçmeyiniz !");
                     btnRegister.setVisibility(View.VISIBLE);
                     loadingProgress.setVisibility(View.INVISIBLE);
 
+                }
+                else if ( email.isEmpty() ){
+                    //Yanlış birşeyler oluyor demektir.
+                    //Hata mesajı göstermek gerekir
+
+                    showMessage("Lütfen Email Alanını Boş Geçmeyiniz !");
+                    btnRegister.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
+                }
+                else if ( password.isEmpty() || !password2.equals(password) ){
+                    //Yanlış birşeyler oluyor demektir.
+                    //Hata mesajı göstermek gerekir
+
+                    showMessage("Lütfen Şifre Alanını Boş Geçmeyiniz yada Şifrelerinizin Eşleşme Durumunu Kontrol Ediniz !");
+                    btnRegister.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
+                }
+                else if (  pickedImgUri == null ){
+                    //Yanlış birşeyler oluyor demektir.
+                    //Hata mesajı göstermek gerekir
+
+                    showMessage("Lütfen Bir Fotoğraf Seçiniz ! Kişi Simgesi veya + Butonlarına Tıklayarak Fotoğraf Seçebilirsiniz !");
+                    btnRegister.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
                 }
                 else{
                     //Herşey doğru ve tüm alanlar doldurulmuştur. Kullanıcı hesabı oluşturmaya başlayabiliriz.
