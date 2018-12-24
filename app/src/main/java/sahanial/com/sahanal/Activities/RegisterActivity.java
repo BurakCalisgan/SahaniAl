@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password2 = userPassword2.getText().toString();
                 final String name = userName.getText().toString();
 
-                if ( name.isEmpty()){
+                if ( name.trim().isEmpty()){
                     //Yanlış birşeyler oluyor demektir.
                     //Hata mesajı göstermek gerekir
 
@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                     loadingProgress.setVisibility(View.INVISIBLE);
 
                 }
-                else if ( email.isEmpty() ){
+                else if ( email.trim().isEmpty() ){
                     //Yanlış birşeyler oluyor demektir.
                     //Hata mesajı göstermek gerekir
 
@@ -98,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                     btnRegister.setVisibility(View.VISIBLE);
                     loadingProgress.setVisibility(View.INVISIBLE);
                 }
-                else if ( password.isEmpty() || !password2.equals(password) ){
+                else if ( password.trim().isEmpty() || !password2.equals(password) ){
                     //Yanlış birşeyler oluyor demektir.
                     //Hata mesajı göstermek gerekir
 

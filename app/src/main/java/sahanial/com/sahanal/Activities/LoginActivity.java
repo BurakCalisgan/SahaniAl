@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String mail = userMail.getText().toString();
                 final String password = userPassword.getText().toString();
 
-                if ( mail.isEmpty() || password.isEmpty() ){
+                if ( mail.trim().isEmpty() || password.trim().isEmpty() ){
                     showMessage("Lütfen Tüm Alanları Doğrulayın !");
                     btnLogin.setVisibility(View.VISIBLE);
                     loginProgress.setVisibility(View.INVISIBLE);
