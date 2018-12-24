@@ -162,7 +162,6 @@ public class Ranvdevular extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 RandevuModel model=itemList.get(i);
                 //view.setBackgroundColor(Color.parseColor("#FFB6B546"));
-                Toast.makeText(getContext(),"i:"+i+" id:"+model.key,Toast. LENGTH_SHORT).show();
                 Intent act = new Intent(getContext(),RandevuDetay.class);
                 act.putExtra("tel",model.tel);
                 act.putExtra("adSoyad",model.adSoyad);

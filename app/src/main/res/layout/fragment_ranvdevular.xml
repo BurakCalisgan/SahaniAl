@@ -58,7 +58,7 @@
         android:layout_marginTop="119dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="17dp"
-        android:paddingTop="15dp"
+        android:paddingTop="12dp"
         android:ems="10"
         android:inputType="date"
         android:text="Tarih Seçiniz"
