@@ -11,22 +11,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.OpeningScreenActivity">
+        <activity android:name=".Activities.OpeningScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.LoginActivity" />
-        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.RegisterActivity" android:screenOrientation="portrait"/>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.SahaDetayActivity" />
-        <activity android:name=".Activities.RandevuDetay" />
-        <activity android:name=".Activities.YeniRandevu"></activity>
+        <activity android:name=".Activities.SahaDetayActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.RandevuDetay" android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.YeniRandevu" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
