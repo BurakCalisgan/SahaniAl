@@ -19,6 +19,7 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/txAdSoyad"
         app:layout_constraintEnd_toStartOf="@+id/ddSaatler"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -97,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ddSaatler" />
 
 
     <Spinner
