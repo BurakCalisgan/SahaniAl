@@ -10,79 +10,76 @@
     <TextView
         android:id="@+id/textView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="38dp"
         android:layout_marginStart="28dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="19dp"
         android:text="Saat:"
         android:textColor="@color/white"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/txAdSoyad"
         app:layout_constraintEnd_toStartOf="@+id/ddSaatler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <Spinner
         android:id="@+id/ddSaatler"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="397dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGuncelle"
+        android:layout_height="35dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="83dp"
+        android:background="@color/blurWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/ddSahalar"
-        android:background="@color/blurWhite"/>
+        app:layout_constraintTop_toTopOf="@+id/ddSahalar" />
 
     <EditText
         android:id="@+id/txTel"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="14dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/white_rectangle"
         android:hint="Telefon numarası giriniz."
-        android:inputType="phone"
         android:paddingLeft="10dp"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/txTarih"
-        app:layout_constraintEnd_toEndOf="@+id/txAdSoyad"
-        app:layout_constraintStart_toStartOf="@+id/txAdSoyad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf=""
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txAdSoyad" />
 
 
     <TextView
         android:id="@+id/txTarih"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
         android:background="@drawable/date_trans_white_rectangle"
         android:paddingTop="12dp"
-        android:layout_width="208dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="218dp"
         android:text=" Tarih Seçiniz"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSil"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txTel"
+        app:layout_constraintStart_toStartOf="@+id/txTel"
         app:layout_constraintTop_toBottomOf="@+id/txTel" />
 
 
     <EditText
         android:id="@+id/txAdSoyad"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/white_rectangle"
         android:hint="Ad soyad giriniz."
         android:paddingLeft="10dp"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/txTel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ddSaatler" />
 
@@ -90,61 +87,54 @@
     <Spinner
         android:id="@+id/ddSahalar"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/ddSaatler"
+        android:layout_height="35dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="80dp"
+        android:background="@color/blurWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/blurWhite"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="38dp"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="37dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
         android:text="Saha Adı:"
         android:textColor="@color/white"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/ddSahalar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGuncelle"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="91dp"
+        android:layout_height="47dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/pitch_management_update_button"
         android:text="GÜNCELLE"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSil"
-        app:layout_constraintTop_toBottomOf="@+id/ddSaatler" />
+        app:layout_constraintTop_toBottomOf="@id/txTarih"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
     <Button
         android:id="@+id/btnSil"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="91dp"
+        android:layout_height="47dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/pitch_management_delete_button"
-        android:textColor="@color/white"
         android:text="SİL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnGuncelle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txTarih" />
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/txTarih"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
