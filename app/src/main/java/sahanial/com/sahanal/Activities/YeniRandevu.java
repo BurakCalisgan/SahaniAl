@@ -57,19 +57,18 @@ public class YeniRandevu extends AppCompatActivity {
         setContentView(R.layout.activity_yeni_randevu);
         getWindow().setBackgroundDrawableResource(R.drawable.footballpitch);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        txTel=(EditText) findViewById(R.id.txTel);
-        txAdSoyad=(EditText) findViewById(R.id.txAdSoyad);
-       // txSaat=(EditText) findViewById(R.id.txSaat);
-        dtTarih=(TextView) findViewById(R.id.txTarih);
-        btnEkle =(Button) findViewById(R.id.btnEkle);
+        txTel = (EditText) findViewById(R.id.txTel);
+        txAdSoyad = (EditText) findViewById(R.id.txAdSoyad);
+        // txSaat=(EditText) findViewById(R.id.txSaat);
+        dtTarih = (TextView) findViewById(R.id.txTarih);
+        btnEkle = (Button) findViewById(R.id.btnEkle);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
         //saatleri ekle
-        List<String> spinnerArray =  new ArrayList<String>();
-        for (int i=0; i<24 ;i++)
-        {
-            String counterStr=String.valueOf(i);
+        List<String> spinnerArray = new ArrayList<String>();
+        for (int i = 0; i < 24; i++) {
+            String counterStr = String.valueOf(i);
             spinnerArray.add(counterStr);
         }
 
@@ -103,25 +102,25 @@ public class YeniRandevu extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        sahalar =  new ArrayList<String>();
+        sahalar = new ArrayList<String>();
         adapter2 = new ArrayAdapter<String>(
                 YeniRandevu.this, android.R.layout.simple_spinner_item, sahalar);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ddSahalar = (Spinner) findViewById(R.id.ddSahalar);
         ddSahalar.setAdapter(adapter2);
 
-        mAuth=FirebaseAuth.getInstance();
-        user=mAuth.getCurrentUser();
-        databaseReference =FirebaseDatabase.getInstance().getReference("sahalar/"+user.getUid().toString());
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("sahalar/" + user.getUid().toString());
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String id,sahaAd,sahaOzellik,sahaGenislik,sahaYukseklik;
+                String id, sahaAd, sahaOzellik, sahaGenislik, sahaYukseklik;
 
-                for(DataSnapshot sahaSnapshot:dataSnapshot.getChildren()){
-                    Map<String,String> map = (Map<String,String>) sahaSnapshot.getValue();
-                    id=map.get("sahaID");
-                    sahaAd=map.get("sahaAd");
+                for (DataSnapshot sahaSnapshot : dataSnapshot.getChildren()) {
+                    Map<String, String> map = (Map<String, String>) sahaSnapshot.getValue();
+                    id = map.get("sahaID");
+                    sahaAd = map.get("sahaAd");
 
                     sahalar.add(sahaAd);
                     adapter2.notifyDataSetChanged();
@@ -137,45 +136,62 @@ public class YeniRandevu extends AppCompatActivity {
         btnEkle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                model = new RandevuModel();
-                model.sahaAdi=ddSahalar.getSelectedItem().toString();
-                model.sahaId="11";
-                model.tarih=dtTarih.getText().toString();
-                model.tel=txTel.getText().toString();
-                model.adSoyad=txAdSoyad.getText().toString();
-                model.saat= sItems.getSelectedItem().toString();
+                if (txAdSoyad.getText().toString().trim().isEmpty()) {
+                    showMessage("Lütfen Ad Soyad Alanını Boş Geçmeyiniz !");
+                }
+                else if (txTel.getText().toString().trim().isEmpty()) {
+                    showMessage("Lütfen Telefon Numarası Alanını Boş Geçmeyiniz !");
+                }
+                else if (dtTarih.getText().toString().trim().isEmpty() || dtTarih.getText().toString().equals("Tarih Seçiniz")) {
+                    showMessage("Lütfen Bir Tarih Seçiniz!");
+                }
+                else {
 
-                DatabaseReference myRef = database.getReference("randevular"+"/"+currentUser.getUid()+"/");
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                       Boolean varmi= dataSnapshot.child(model.tarih+"/"+model.saat).exists();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    model = new RandevuModel();
+                    model.sahaAdi = ddSahalar.getSelectedItem().toString();
+                    model.sahaId = "11"; //Saha Id değerinin bir önemi yok !
+                    model.tarih = dtTarih.getText().toString();
+                    model.tel = txTel.getText().toString();
+                    model.adSoyad = txAdSoyad.getText().toString();
+                    model.saat = sItems.getSelectedItem().toString();
 
-                        if(varmi)
-                        {
-                            Toast.makeText(YeniRandevu.this, "Bu tarih ve sate ait başka bir kayit zaten ekli",
-                                    Toast.LENGTH_SHORT).show();
-                            return;
+                    DatabaseReference myRef = database.getReference("randevular" + "/" + currentUser.getUid() + "/");
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Boolean varmi = dataSnapshot.child(model.tarih + "/" + model.saat).exists();
+
+                            if (varmi) {
+                                Toast.makeText(YeniRandevu.this, "Bu tarih ve sate ait başka bir kayit zaten ekli",
+                                        Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+
+                            DatabaseReference myRef = database.getReference("randevular" + "/" + currentUser.getUid() + "/" + model.tarih + "/" + model.saat);
+                            myRef.setValue(model);
+                            finish();
                         }
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+
+                        }
+                    });
 
 
-                        DatabaseReference myRef = database.getReference("randevular"+"/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
-                        myRef.setValue(model);
-                        finish();
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-
-                    }
-                });
-
-
-
-
+                }
             }
         });
+
     }
+
+    //Toast mesajı göstermek için basit bir metot
+    private void showMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
+    }
+
 }

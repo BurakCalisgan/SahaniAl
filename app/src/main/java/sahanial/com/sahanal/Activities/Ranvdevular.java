@@ -178,41 +178,48 @@ public class Ranvdevular extends Fragment {
         btnSorgula.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Here, you set the data in your ListView
-                liste.setAdapter(adapter);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                mAuth = FirebaseAuth.getInstance();
-                FirebaseUser currentUser = mAuth.getCurrentUser();
-                DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+dtTarih.getText().toString());
+                if (dtTarih.getText().toString().trim().isEmpty() || dtTarih.getText().toString().equals("Tarih Seçiniz")) {
+                    showMessage("Lütfen Bir Tarih Seçiniz!");
+                }
+                else{
+                    // Here, you set the data in your ListView
+                    liste.setAdapter(adapter);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                    DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+dtTarih.getText().toString());
 
 
-                // Read from the database
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Read from the database
+                    myRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                        itemList.clear();
-                        arrayList.clear();
-                        for (DataSnapshot zoneSnapshot: dataSnapshot.getChildren()) {
+                            itemList.clear();
+                            arrayList.clear();
+                            for (DataSnapshot zoneSnapshot: dataSnapshot.getChildren()) {
 
-                            //String tel= zoneSnapshot.child("tel").getValue(String.class);
-                            RandevuModel value = zoneSnapshot.getValue(RandevuModel.class);
-                            value.key=zoneSnapshot.getKey();
-                            itemList.add(value);
-                            arrayList.add(value.sahaAdi+"\nTel:"+value.tel+"\nTarih:"+value.tarih+"-"+value.saat+":00");
-                            // arrayList.add(tel);
-                            adapter.notifyDataSetChanged();
+                                //String tel= zoneSnapshot.child("tel").getValue(String.class);
+                                RandevuModel value = zoneSnapshot.getValue(RandevuModel.class);
+                                value.key=zoneSnapshot.getKey();
+                                itemList.add(value);
+                                arrayList.add(value.sahaAdi+"\nTel:"+value.tel+"\nTarih:"+value.tarih+"-"+value.saat+":00");
+                                // arrayList.add(tel);
+                                adapter.notifyDataSetChanged();
+
+                            }
 
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            Toast.makeText(getActivity(), "Error 404.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        Toast.makeText(getActivity(), "Error 404.",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }
+
             }
         });
 
@@ -223,6 +230,12 @@ public class Ranvdevular extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         String aa="aaa";
+    }
+
+    //Toast mesajı göstermek için basit bir metot
+    private void showMessage(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
+
     }
 
 }

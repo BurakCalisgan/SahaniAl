@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -106,25 +107,43 @@ public class RandevuDetay extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+tarih+"/"+key);
                 myRef.removeValue();
+                showMessage("Randevu Başarıyla Silinmiştir.");
                 finish();
             }
         });
         btnGuncelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+tarih+"/"+key);
-                myRef.removeValue();
-                RandevuModel model = new RandevuModel();
+                if (txAdSoyad.getText().toString().trim().isEmpty()) {
+                    showMessage("Lütfen Ad Soyad Alanını Boş Geçmeyiniz !");
+                }
+                else if (txTel.getText().toString().trim().isEmpty()) {
+                    showMessage("Lütfen Telefon Numarası Alanını Boş Geçmeyiniz !");
+                }
+                else if (dtTarih.getText().toString().trim().isEmpty() || dtTarih.getText().toString().equals("Tarih Seçiniz")) {
+                    showMessage("Lütfen Bir Tarih Seçiniz!");
+                }
+                else {
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("randevular/"+currentUser.getUid()+"/"+tarih+"/"+key);
+                    myRef.removeValue();
+                    RandevuModel model = new RandevuModel();
 
-                model.tarih=dtTarih.getText().toString();
-                model.tel=txTel.getText().toString();
-                model.adSoyad=txAdSoyad.getText().toString();
-                model.saat=sItems.getSelectedItem().toString();
-                model.sahaAdi=ddSahalar.getSelectedItem().toString();
-                DatabaseReference myRef2 = database.getReference("randevular/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
-                myRef2.setValue(model);
-                finish();
+                    model.tarih=dtTarih.getText().toString();
+                    model.tel=txTel.getText().toString();
+                    model.adSoyad=txAdSoyad.getText().toString();
+                    model.saat=sItems.getSelectedItem().toString();
+                    model.sahaAdi=ddSahalar.getSelectedItem().toString();
+                    DatabaseReference myRef2 = database.getReference("randevular/"+currentUser.getUid()+"/"+model.tarih+"/"+model.saat);
+                    myRef2.setValue(model);
+                    showMessage("Randevu Başarıyla Güncellenmiştir.");
+                    finish();
+
+
+
+                }
+
+
             }
         });
         dtTarih.setOnClickListener(new View.OnClickListener() {
@@ -186,6 +205,12 @@ public class RandevuDetay extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    //Toast mesajı göstermek için basit bir metot
+    private void showMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
 
     }
 }
